@@ -5,7 +5,6 @@ const table = require("console.table");
 
 const logo = require('asciiart-logo');
 const config = require('./package.json');
-console.log(logo(config).render());
 
 
 // destructure variables from the question.js
@@ -68,26 +67,6 @@ function updateEmployee() {
 }
 
 function init() {
-
-
-
-    console.log(
-        logo({
-            name: 'Employee Tracker',
-            font: 'Speed',
-            lineChars: 10,
-            padding: 2,
-            margin: 3,
-            borderColor: 'grey',
-            logoColor: 'bold-green',
-            textColor: 'green',
-        })
-            .emptyLine()
-            .right('version 3.7.123')
-            .emptyLine()
-            .render()
-    );
-
     inquirer
         // prompt menu questions
         .prompt(menu)
@@ -135,5 +114,24 @@ function init() {
             }
         });
 }
+function logo() {
+    console.log(
+        logo({
+            name: 'Employee Tracker',
+            font: 'Speed',
+            lineChars: 10,
+            padding: 2,
+            margin: 3,
+            borderColor: 'grey',
+            logoColor: 'bold-green',
+            textColor: 'green',
+        })
+            .emptyLine()
+            .right('version 3.7.123')
+            .emptyLine()
+            .render()
+    );
+}
 
 init();
+logo();
