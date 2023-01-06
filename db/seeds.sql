@@ -13,7 +13,7 @@ VALUES ("Web Development Manager", 120000, 1),
        ("Quality Analyst", 60000, 3),
        ("Quality Coordinator", 46000, 3);
 
-INSERT INTO epmloyee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("James", "Smith", 1, 0),
        ("Robert", "Johnson", 2, 1),
        ("Mary", "Williams", 3, 1),
