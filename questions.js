@@ -26,40 +26,40 @@ const questions = {
     {
       type: "input",
       message: "Enter the name of the role.",
-      name: "roleName",
+      name: "title",
     },
     {
       type: "input",
       message: "Enter the salary for the role.",
-      name: "roleSalary",
+      name: "salary",
     },
     {
       type: "input",
       message: "Enter the department ID for the role.",
-      name: "roleDepartment",
+      name: "department_id",
     },
   ],
   employee: [
     {
       type: "input",
       message: "Enter the first name of the employee.",
-      name: "employeeFirstName",
+      name: "first_name",
     },
     {
       type: "input",
       message: "Enter the last name of the employee.",
-      name: "employeeLastName",
+      name: "last_name",
     },
     {
       type: "input",
       // role id???
       message: "Enter the role of the employee.",
-      name: "employeeRole",
+      name: "role_id",
     },
     {
       type: "input",
       message: "Enter the manager's ID of the employee.",
-      name: "employeeManager",
+      name: "manager_id",
     },
   ],
   update: [
@@ -70,7 +70,7 @@ const questions = {
     },
     {
       type: "input",
-      message: "Enter the new role for this employee.",
+      message: "Enter the new role ID for this employee.",
       name: "updateRole",
     },
   ],
