@@ -114,7 +114,7 @@ function init() {
             }
         });
 }
-function logo() {
+function art() {
     console.log(
         logo({
             name: 'Employee Tracker',
@@ -133,5 +133,5 @@ function logo() {
     );
 }
 
+art();
 init();
-logo();

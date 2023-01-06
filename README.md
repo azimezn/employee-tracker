@@ -21,7 +21,9 @@ An employee tracker that can generate new departments, roles, and employees and 
 
 Answer questions through the command-line application and the results will be generated instantly.
 
-![screenshot of the team member generator](./dist/assets/images/screenshot.png)
+video: https://drive.google.com/file/d/1MupXfYv3DfX44gKtC6FDcVaM1cB_jy1o/view?usp=share_link
+
+![screenshot of the team member generator](./images/screenshot.png)
 
 ## Credits
 
