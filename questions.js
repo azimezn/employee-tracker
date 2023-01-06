@@ -11,6 +11,7 @@ const questions = {
         "add a role",
         "add an employee",
         "update an employee role",
+        "quit",
       ],
       name: "initQuestion",
     },

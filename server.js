@@ -101,6 +101,9 @@ function init() {
                     console.table(results);
                     updateEmployee();
                 });
+            } else {
+                // how do i end it?
+                console.log("quit")
             }
         });
 }
@@ -108,3 +111,5 @@ function init() {
 init();
 
 // how to do manager IDs after adding an employee or changing a role???
+
+// how do you change numerical values to strings like department_id??
