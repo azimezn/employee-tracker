@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
+// console.table package???
 
 const db = mysql.createConnection(
     {
@@ -156,3 +157,5 @@ function init() {
 }
 
 init();
+
+// how to do manager IDs after adding an employee or changing a role???
