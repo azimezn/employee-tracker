@@ -53,7 +53,6 @@ const questions = {
     },
     {
       type: "input",
-      // role id???
       message: "Enter the role of the employee.",
       name: "role_id",
     },

@@ -2,6 +2,12 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const table = require("console.table");
+
+const logo = require('asciiart-logo');
+const config = require('./package.json');
+console.log(logo(config).render());
+
+
 // destructure variables from the question.js
 const { menu, department, role, employee, update } = require("./questions");
 
@@ -62,6 +68,26 @@ function updateEmployee() {
 }
 
 function init() {
+
+
+
+    console.log(
+        logo({
+            name: 'Employee Tracker',
+            font: 'Speed',
+            lineChars: 10,
+            padding: 2,
+            margin: 3,
+            borderColor: 'grey',
+            logoColor: 'bold-green',
+            textColor: 'green',
+        })
+            .emptyLine()
+            .right('version 3.7.123')
+            .emptyLine()
+            .render()
+    );
+
     inquirer
         // prompt menu questions
         .prompt(menu)
@@ -80,7 +106,7 @@ function init() {
                     init();
                 });
             } else if (initQuestion == "view all employees") {
-                db.query("SELECT * FROM employee", (err, results) => {
+                db.query("SELECT * FROM employee JOIN role ON role.id = employee.role_id JOIN department ON department.id = role.department_id", (err, results) => {
                     console.table(results);
                     init();
                 });
@@ -105,14 +131,9 @@ function init() {
                     updateEmployee();
                 });
             } else {
-                // how do i end it?
-                console.log("quit")
+                return
             }
         });
 }
 
 init();
-
-// how to do manager IDs after adding an employee or changing a role???
-
-// how do you change numerical values to strings like department_id??
