@@ -1,10 +1,11 @@
+// connect npms
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-// dont need the console.table npm???
 const table = require("console.table");
-// const logo = require("asciiart-logo");
+// destructure variables from the question.js
 const { menu, department, role, employee, update } = require("./questions");
 
+// connect mysql
 const db = mysql.createConnection(
     {
         host: "localhost",
@@ -17,32 +18,31 @@ const db = mysql.createConnection(
 
 function addDepartment() {
     inquirer
-        // questions.department but now I destructured it
+        // prompt the questions to add a department
+        // don't need to write "questions.department" because I destructured it
         .prompt(department)
         .then((data) => {
-            // {name: data.name} is the whole data anyway, so just write data
+            // {name: data.name} is the whole data anyway, so just call the data
             db.query(`INSERT INTO department SET ?`, data, (err, results) => {
                 console.table(results[0]);
+                // go back to the menu
                 init();
             });
         });
 }
 
 function addRole() {
-    inquirer
-        .prompt(role)
-        .then((data) => {
-            // `INSERT INTO department (title, salary, department_id), VALUES ("${roleName}", "${roleSalary}", "${roleDepartment}")`,
-            db.query(`INSERT INTO role SET ?`, data, (err, results) => {
-                // console.log(results);
-                init();
-            });
+    inquirer.prompt(role).then((data) => {
+        // {title: data.title, salary: data.salary, department_id: data.department_id}
+        db.query(`INSERT INTO role SET ?`, data, (err, results) => {
+            init();
         });
+    });
 }
 
 function addEmployee() {
     inquirer.prompt(employee).then((data) => {
-        // `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${employeeFirstName}", "${employeeLastName}", "${employeeRole}", "${employeeManager}")`
+        // {first_name: data.first_name, last_name: data.last_name, role_id: data.role_id, manager_id: data.manager.id}
         db.query(`INSERT INTO employee SET ?`, data, (err, results) => {
             console.log(results);
             init();
@@ -52,7 +52,6 @@ function addEmployee() {
 
 function updateEmployee() {
     inquirer.prompt(update).then((data) => {
-        // `UPDATE employee SET role = "${data.updateRole}" WHERE employee_id = ${data.updateID};`
         db.query(
             `UPDATE employee SET role = "${data.updateRole}" WHERE employee_id = ${data.updateID};`, (err, results) => {
                 console.log(results);
@@ -63,11 +62,14 @@ function updateEmployee() {
 
 function init() {
     inquirer
+        // prompt menu questions
         .prompt(menu)
+        // i destructured data, so data.initQuestion == initQuestion
         .then(({ initQuestion }) => {
-            // data.initQuestion but i destructured it
+            // according to what the user chooses in the menu, the results come from mysql
             if (initQuestion == "view all departments") {
                 db.query("SELECT * FROM department", (err, results) => {
+                    //results are shown as a table
                     console.table(results);
                     init();
                 });
