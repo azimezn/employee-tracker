@@ -24,7 +24,7 @@ function addDepartment() {
         .then((data) => {
             // {name: data.name} is the whole data anyway, so just call the data
             db.query(`INSERT INTO department SET ?`, data, (err, results) => {
-                console.table(results[0]);
+                console.log(`${data.name} is added to the department list.`);
                 // go back to the menu
                 init();
             });
@@ -35,6 +35,7 @@ function addRole() {
     inquirer.prompt(role).then((data) => {
         // {title: data.title, salary: data.salary, department_id: data.department_id}
         db.query(`INSERT INTO role SET ?`, data, (err, results) => {
+            console.log(`${data.title} is added to the role list.`);
             init();
         });
     });
@@ -44,7 +45,7 @@ function addEmployee() {
     inquirer.prompt(employee).then((data) => {
         // {first_name: data.first_name, last_name: data.last_name, role_id: data.role_id, manager_id: data.manager.id}
         db.query(`INSERT INTO employee SET ?`, data, (err, results) => {
-            console.log(results);
+            console.log(`${data.first_name} ${data.last_name} is added to the employee list.`);
             init();
         });
     });
@@ -54,7 +55,7 @@ function updateEmployee() {
     inquirer.prompt(update).then((data) => {
         db.query(
             `UPDATE employee SET role = "${data.updateRole}" WHERE employee_id = ${data.updateID};`, (err, results) => {
-                console.log(results);
+                console.log(`employee is updated`);
                 init();
             });
     });
